@@ -49,9 +49,9 @@
   </c-col>  
   <c-col [md]="2">
     <label cLabel for="validationServer04">Ville</label>
-    <select [valid]="false" cSelect id="validationServer04">
+    <select  cSelect id="validationServer04">
       <option disabled>choisir une ville</option>
-      <option *ngFor="let ville of Tunisie" [value]="ville">
+      <option #city *ngFor="let ville of Tunisie" [value]="ville" (onchange)="yourlocation(city.value)">
         {{ ville }}
       </option>
     </select>
@@ -59,13 +59,12 @@
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer03">Region</label>
-    <input
-      [valid]="false"
-      cFormControl
-      id="validationServer03"
-      required
-      type="text"
-    />
+    <select  cSelect id="validationServer04">
+      <option disabled>choisir une region</option>
+      <option #region *ngFor="let reg of region1" [value]="reg">
+        {{ reg }}
+      </option>
+    </select>
     <c-form-feedback [valid]="false"
       >Please provide a valid city.</c-form-feedback
     >
