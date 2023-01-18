@@ -66,7 +66,7 @@
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer03">Region</label>
-    <select cSelect id="validationServer04">
+    <select #poscode cSelect id="validationServer04" (change)="zipcodeByRegion(poscode.value)">
       <option disabled>choisir une region</option>
       <option #region *ngFor="let reg of region1" [value]="reg">
         {{ reg }}
@@ -78,13 +78,12 @@
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer05"> Code Postale</label>
-    <input
-      [valid]="false"
-      cFormControl
-      id="validationServer05"
-      required
-      type="text"
-    />
+    <select cSelect id="validationServer04">
+      <option disabled>choisir un zipcode</option>
+      <option #zipCode *ngFor="let code of codePostale" [value]="zipCode">
+        {{ code }}
+      </option>
+    </select>
     <c-form-feedback [valid]="false"
       >Please provide a valid zip.</c-form-feedback
     >
