@@ -33,7 +33,7 @@ export const navItems: INavData[] = [
   {
     name: 'List of Articles',
     url: '/articles',
-    iconComponent: { name: 'cil-blogger-b' },
+    iconComponent: { name: 'cil-user-follow' },
     badge: {
       color: 'info',
       text: ''

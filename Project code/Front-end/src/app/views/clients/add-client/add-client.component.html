@@ -2,64 +2,71 @@
   <c-col [md]="4">
     <label cLabel for="validationServer01">Nom et Prénom</label>
     <input
-      [valid]="false"
+    #name
+      [valid]="nameValidity"
       cFormControl
       id="validationServer01"
       required
       type="text"
-      value="Mark"
+      placeholder="saadli wissem"
+      (change)="isValidName(name.value)"
+      
     />
-    <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+    <c-form-feedback [valid]="false">invalid name</c-form-feedback>
   </c-col>
   <c-col [md]="4">
     <label cLabel for="validationServer02">Adresse</label>
     <input
-   
-      [valid]="false"
+      #adresse
+      [valid]="AdressValidity"
       cFormControl
       id="validationServer02"
       required
-      
+      (change)="validAdresse(adresse.value)"
       type="text"
-      
+      placeholder="12 street region"
     />
-    <div *ngIf="validMail!=undefined">
-   
-    <c-form-feedback [valid]="false">invalid adresse</c-form-feedback>
-</div>
+    
+      <c-form-feedback [valid]="false">invalid adresse</c-form-feedback>
+    
   </c-col>
   <c-col [md]="4">
     <label cLabel for="validationServerUsername">Email</label>
     <c-input-group class="has-validation">
       <span cInputGroupText>@</span>
       <input
-      #mail
+        #mail
         [valid]="validMail"
         aria-describedby="inputGroupPrepend03"
         cFormControl
         id="validationServerUsername"
         required
-        (mouseleave)="verifMail(mail.value)"
+        (change)="verifMail(mail.value)"
         type="text"
+        placeholder="you@exmaple.com"
       />
-      <c-form-feedback [valid]="false"
-        >Please use a valid email !</c-form-feedback
-      >
+      <c-form-feedback [valid]="false">Please use a valid email !</c-form-feedback>
     </c-input-group>
-  </c-col>  
+  </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer04">Ville</label>
-    <select  cSelect id="validationServer04">
-      <option disabled>choisir une ville</option>
-      <option #city *ngFor="let ville of Tunisie" [value]="ville" (onchange)="yourlocation(city.value)">
+    <select #city  cSelect id="validationServer04" (change)="yourlocation(city.value)">
+      
+      <option
+        
+        *ngFor="let ville of Tunisie"
+        [value]="ville"
+      >
         {{ ville }}
       </option>
     </select>
-    <c-form-feedback [valid]="false">Please provide a valid state.</c-form-feedback>
+    <c-form-feedback [valid]="false"
+      >Please provide a valid state.</c-form-feedback
+    >
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer03">Region</label>
-    <select  cSelect id="validationServer04">
+    <select cSelect id="validationServer04">
       <option disabled>choisir une region</option>
       <option #region *ngFor="let reg of region1" [value]="reg">
         {{ reg }}
@@ -79,7 +86,8 @@
       type="text"
     />
     <c-form-feedback [valid]="false"
-      >Please provide a valid zip.</c-form-feedback>
+      >Please provide a valid zip.</c-form-feedback
+    >
   </c-col>
   <c-col [xs]="12">
     <c-form-check class="mb-3">
@@ -91,13 +99,14 @@
         type="checkbox"
       />
       <label cFormCheckLabel for="invalidCheckServer"
-        >Agree to terms and conditions</label>
+        >Agree to terms and conditions</label
+      >
     </c-form-check>
     <c-form-feedback [valid]="false"
       >You must agree before submitting.</c-form-feedback
     >
   </c-col>
   <c-col [xs]="12">
-    <button  cButton color="primary" type="submit">Submit form</button>
+    <button cButton color="primary" type="submit">Submit form</button>
   </c-col>
 </form>

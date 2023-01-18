@@ -15,7 +15,7 @@ export class AddClientComponent  {
   'Jendouba',
   'Nabeul',
   'tunis',
-  'Le Kef',
+  'Kef',
   'Kassérine',
   'Gabès',
   'Gafsa',
@@ -38,9 +38,10 @@ export class AddClientComponent  {
   //expression to verify the mail format 
   expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   // status of the mail valid or not or nothing 
-  validMail:boolean | undefined =undefined;
+  validMail:boolean | undefined ;
   //a function to set the email status 
-  verifMail (/*it takes the mail from the form as a parameter*/mail:string ):void{
+  /*it takes the mail from the form as a parameter*/
+  verifMail (mail:string ):void{
     //verify if it's not empty 
     if(mail !=""){
       //verify if it has the expression email format 
@@ -60,16 +61,31 @@ export class AddClientComponent  {
           this.validMail=undefined
         }
       }
-      //a function that takes the city value and fill the region select with regions from the entred city       
+//a function that verifies the adress input type 
+      AdressValidity: boolean | undefined 
+      validAdresse(address:string) {
+        //he regular expressionis used to match the address. It allows for alphanumeric characters, spaces, commas, apostrophes, and dashes
+        let addressRegex = /^[0-9a-zA-Z\s,'-]*$/;
+        this.AdressValidity = addressRegex.test(address);
+        
+      }
+
+//a function that verifies validity of the name input
+    nameValidity :boolean | undefined 
+    isValidName(name: string) {
+        let nameRegex = /^[a-zA-Z\s]*$/;
+        this.nameValidity= nameRegex.test(name);
+    } 
+//a function that takes the city value and fill the region select with regions from the entred city       
         ville :String ="";
         region1 :String[] =[];
-        
         codePostale :String []=[];
-
+        selectedCity='Tozeur'
+        
         yourlocation(ville :string ){
-          console.log("active")
+          
           switch (ville) {
-              case 'Tozeur':{
+              case this.Tunisie[0]:{
                   this.region1=[];
                   this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA");
                   break;
@@ -94,19 +110,19 @@ export class AddClientComponent  {
                   break;}
               case this.Tunisie[5]:{
                   this.region1=[];
-                  this.region1.push("FERNANA","GHARDIMAOU","TABARKA","JENDOUBA","AIN DRAHAM","")
+                  this.region1.push("FERNANA","GHARDIMAOU","TABARKA","JENDOUBA","AIN DRAHAM","JENDOUBA NORD","OUED MLIZ","BOU SALEM","BALTA BOU AOUENE")
                   break;}
               case this.Tunisie[6]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("KORBA","SOLIMAN","TAKELSA","MENZEL BOUZELFA","MENZEL TEMIME","NABEUL","BENI KHIAR","BENI KHALLED","HAMMAMET","EL HAOUARIA","KELIBIA","GROMBALIA","EL MIDA","BOU ARGOUB","DAR CHAABANE","HAMMAM EL GHEZAZ")
                   break;}
               case this.Tunisie[7]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("EL MENZAH","EL HRAIRIA","EL KABBARIA","EL KRAM","BAB SOUIKA",'CARTHAGE',"CITE EL KHADRA","BAB BHAR","LA MARSA","EZZOUHOUR","JEBEL JELLOUD","SIDI EL BECHIR","LA GOULETTE","LE BARDO","EL OMRANE","EL OUERDIA","ETTAHRIR","SIDI HASSINE","ESSIJOUMI","LA MEDINA")
                   break;}
               case this.Tunisie[8]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("TAJEROUINE","TOUIREF","SAKIET SIDI YOUSSEF","LE SERS","EL KSOUR","LE KEF EST","DAHMANI","KALAAT","JERISSA","KALAA EL KHASBA","LE KEF OUEST")
                   break;}
               case this.Tunisie[9]:{
                   this.region1=[];
@@ -172,6 +188,9 @@ export class AddClientComponent  {
           }
   
       }
+   
+
+      
 
   
   constructor() {
