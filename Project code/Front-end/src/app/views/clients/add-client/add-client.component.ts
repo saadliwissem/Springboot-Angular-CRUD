@@ -82,12 +82,13 @@ export class AddClientComponent  {
         codePostale :String []=[];
         selectedCity='Tozeur'
         
-        yourlocation(ville :string ){
+        regionByState(ville :string ){
           
           switch (ville) {
               case this.Tunisie[0]:{
                   this.region1=[];
                   this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA");
+                  
                   break;
               }
               case this.Tunisie[1]:{
@@ -126,68 +127,69 @@ export class AddClientComponent  {
                   break;}
               case this.Tunisie[9]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("HAIDRA","SBEITLA","MEJEL BEL ABBES","KASSERINE NORD","EL AYOUN","EZZOUHOUR","FERIANA","FOUSSANA","HASSI EL FRID","JEDILIANE","SBIBA","THALA")
                   break;}
               case this.Tunisie[10]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("EL METOUIA","GABES MEDINA","GABES OUEST","GABES SUD","EL HAMMA","NOUVELLE MATMATA","MARETH","GHANNOUCHE","MATMATA","MENZEL HABIB")
                   break;}
               case this.Tunisie[11]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("BELKHIR","EL GUETTAR","EL KSAR","EL MDHILLA","SNED","MOULARES","REDEYEF","SIDI AICH","GAFSA SUD","METLAOUI","GAFSA NORD")
                   break;}
               case this.Tunisie[13]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("BEN OUN","BIR EL HAFFEY","JILMA","CEBBALA","OULED HAFFOUZ","MEZZOUNA","REGUEB","SIDI BOUZID OUEST","SOUK JEDID","SIDI BOUZID EST","MAKNASSY","MENZEL BOUZAIENE")
                   break;}
               case this.Tunisie[14]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("EL HENCHA","ESSKHIRA","GHRAIBA","EL AMRA","BIR ALI BEN KHELIFA","AGAREB","SFAX VILLE","SAKIET EDDAIER","MAHRAS","MENZEL CHAKER","SFAX EST","SFAX SUD","JEBENIANA","KERKENAH","SAKIET EZZIT")
                   break;}
               case this.Tunisie[15]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("SILIANA SUD","SIDI BOU ROUIS","SILIANA NORD","GAAFOUR","KESRA","LE KRIB","BOU ARADA","BARGOU","MAKTHAR","ROHIA","EL AROUSSA")
                   break;}
               case this.Tunisie[16]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("MELLOULECH","SIDI ALOUENE","MAHDIA","SOUASSI","OULED CHAMAKH","BOU MERDES","CHORBANE","KSOUR ESSAF","HBIRA","LA CHEBBA","EL JEM")
                   break;}
               case this.Tunisie[17]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("SAYADA LAMTA BOU HAJAR","KSIBET EL MEDIOUNI","KSAR HELAL","JEMMAL","SAHLINE","MONASTIR","MOKNINE","OUERDANINE","TEBOULBA","ZERAMDINE","BEKALTA","BEMBLA","BENI HASSEN")
                   break;}
               case this.Tunisie[18]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("SBIKHA","KAIROUAN SUD","OUESLATIA","NASRALLAH","KAIROUAN NORD","EL ALA","HAJEB EL AYOUN","CHEBIKA","HAFFOUZ","CHERARDA","BOU HAJLA")
                   break;}
               case this.Tunisie[19]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("SIDI BOU ALI","SIDI EL HENI","SOUSSE JAOUHARA","SOUSSE RIADH","SOUSSE VILLE","BOU FICHA","AKOUDA","HAMMAM SOUSSE","KALAA ESSGHIRA","KONDAR","MSAKEN","ENFIDHA","HERGLA","KALAA EL KEBIRA","SOUSSE")
                   break;}
               case this.Tunisie[20]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("ENNADHOUR","EL FAHS","BIR MCHERGA","ZAGHOUAN","HAMMAM ZRIBA","SAOUEF")
                   break;}
               case this.Tunisie[21]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("HOUMET ESSOUK","MEDENINE SUD","BENI KHEDACHE","SIDI MAKHLOUF","MIDOUN","ZARZIS","MEDENINE NORD","BEN GUERDANE","AJIM")
                   break;}
               case this.Tunisie[21]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("SOUK EL AHAD","KEBILI SUD","KEBILI NORD","DOUZ","EL FAOUAR")
                   break;}
               case this.Tunisie[22]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("TATAOUINE SUD","BIR LAHMAR","GHOMRASSEN","TATAOUINE NORD","REMADA","SMAR")
                   break;}
               case this.Tunisie[23]:{
                   this.region1=[];
-                  this.region1.push("DEGUECHE","TOZEUR","HEZOUA","NEFTA","TAMEGHZA")
+                  this.region1.push("RAOUED","SIDI THABET","ARIANA VILLE","LA SOUKRA","KALAAT LANDLOUS","ETTADHAMEN","MNIHLA")
                   break;}
               
           }
   
       }
+
    
 
       
