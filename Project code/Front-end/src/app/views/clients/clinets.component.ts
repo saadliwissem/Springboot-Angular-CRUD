@@ -27,6 +27,7 @@ export class ClinetsComponent implements OnInit{
   ngOnInit() {
     this.reviewClients()
   }
+  //get clients function
   reviewClients(){
     
     this.ServiceC.getClients().subscribe({
@@ -37,6 +38,7 @@ export class ClinetsComponent implements OnInit{
       error:(e)=>console.log(e)
     });
   }
+  //delete client function 
   deleteClient(id:number, name: string): void {
     let reponse = confirm('are you sure you want to delete '+ name );
     if (reponse) {
@@ -51,4 +53,8 @@ export class ClinetsComponent implements OnInit{
   }
   }
 
+   //editing existing client
+   editClient(id:number){
+    
+   }
 }

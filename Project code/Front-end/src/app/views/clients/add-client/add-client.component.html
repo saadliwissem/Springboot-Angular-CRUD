@@ -1,8 +1,10 @@
-<form [gutter]="3" cForm cRow class="needs-validation" ngNativeValidate>
+<form #addform="ngForm" (ngSubmit)="submitNewClient(addform)" [gutter]="3" cForm cRow class="needs-validation" ngNativeValidate>
   <c-col [md]="4">
-    <label cLabel for="validationServer01">Nom et Prénom</label>
+    <label cLabel for="validationServer01">full name</label>
     <input
     #name
+      ngModel
+      name="nom"
       [valid]="nameValidity"
       cFormControl
       id="validationServer01"
@@ -15,9 +17,11 @@
     <c-form-feedback [valid]="false">invalid name</c-form-feedback>
   </c-col>
   <c-col [md]="4">
-    <label cLabel for="validationServer02">Adresse</label>
+    <label cLabel for="validationServer02">address</label>
     <input
-      #adresse
+    name="adresse"
+    ngModel
+    #adresse
       [valid]="AdressValidity"
       cFormControl
       id="validationServer02"
@@ -35,6 +39,8 @@
     <c-input-group class="has-validation">
       <span cInputGroupText>@</span>
       <input
+      name="email"
+      ngModel
         #mail
         [valid]="validMail"
         aria-describedby="inputGroupPrepend03"
@@ -49,8 +55,28 @@
     </c-input-group>
   </c-col>
   <c-col [md]="2">
-    <label cLabel for="validationServer04">Ville</label>
-    <select #city  cSelect id="validationServer04" (change)="regionByState(city.value)">
+    <label cLabel for="validationServerUsername">Phone Number </label>
+    <c-input-group class="has-validation">
+      
+      <input
+      name="tel"
+        #phone
+        ngModel
+        [valid]="validPhone"
+        aria-describedby="inputGroupPrepend03"
+        cFormControl
+        id="validationServerUsername"
+        required
+        (change)="verifyTunisianPhoneNumber(phone.value)"
+        type="text"
+        placeholder=" 21 212 212"
+      />
+      <c-form-feedback [valid]="false">Please use a valid phone number !</c-form-feedback>
+    </c-input-group>
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="validationServer04">state</label>
+    <select name="ville" ngModel #city  cSelect id="validationServer04" (change)="regionByState(city.value)">
       
       <option
         
@@ -60,42 +86,37 @@
         {{ ville }}
       </option>
     </select>
-    <c-form-feedback [valid]="false"
-      >Please provide a valid state.</c-form-feedback
-    >
+    
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer03">Region</label>
-    <select #poscode cSelect id="validationServer04" (change)="zipcodeByRegion(poscode.value)">
+    <select ngModel name="region" #region cSelect id="validationServer04" (change)="zipcodeByRegion(region.value)">
       <option disabled>choisir une region</option>
       <option #region *ngFor="let reg of region1" [value]="reg">
         {{ reg }}
       </option>
     </select>
-    <c-form-feedback [valid]="false"
-      >Please provide a valid city.</c-form-feedback
-    >
+    
   </c-col>
   <c-col [md]="2">
     <label cLabel for="validationServer05"> Code Postale</label>
-    <select cSelect id="validationServer04">
+    <select ngModel name="codePostale" cSelect id="validationServer04">
       <option disabled>choisir un zipcode</option>
-      <option #zipCode *ngFor="let code of codePostale" [value]="zipCode">
+      <option #zipCode *ngFor="let code of codePostale" [value]="code">
         {{ code }}
       </option>
     </select>
-    <c-form-feedback [valid]="false"
-      >Please provide a valid zip.</c-form-feedback
-    >
+    
   </c-col>
   <c-col [xs]="12">
     <c-form-check class="mb-3">
       <input
-        [valid]="false"
+        [valid]="checked"
         cFormCheckInput
         id="invalidCheckServer"
         required
         type="checkbox"
+        #myCheckbox (change)="onCheckboxChange(myCheckbox.checked)"
       />
       <label cFormCheckLabel for="invalidCheckServer"
         >Agree to terms and conditions</label
@@ -106,6 +127,6 @@
     >
   </c-col>
   <c-col [xs]="12">
-    <button cButton color="primary" type="submit">Submit form</button>
+    <button [disabled]="addform.invalid"  cButton color="primary" type="submit">Submit form</button>
   </c-col>
 </form>

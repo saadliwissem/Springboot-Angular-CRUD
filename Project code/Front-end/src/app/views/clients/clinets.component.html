@@ -30,9 +30,8 @@
               <td>{{client.codePostale}}</td>
               <td>{{client.countNum}}</td>
               <td>{{client.tel}}</td>
-             
-             
-              <td>edit</td>
+                
+              <td><Button (click)="deleteClient(client.id,client.nom)">edit</Button></td>
               <td><Button (click)="deleteClient(client.id,client.nom)">delete</Button> </td>
               
             </tr>

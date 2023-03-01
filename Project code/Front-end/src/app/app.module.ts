@@ -59,7 +59,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ArticlesComponent } from './views/articles/articles.component';
 import { CardComponent } from './views/articles/card/card.component';
 import { AddClientComponent } from './views/clients/add-client/add-client.component';
-import { CodePostalComponent } from './Poste/code-postal/code-postal.component';
+import { EditClientComponent } from './views/clients/edit-client/edit-client.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -72,7 +73,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, ...APP_CONTAINERS, ClinetsComponent, ArticlesComponent, CardComponent, AddClientComponent, CodePostalComponent],
+    declarations: [AppComponent, ...APP_CONTAINERS, ClinetsComponent, ArticlesComponent, CardComponent, AddClientComponent, EditClientComponent,],
     providers: [
         {
             provide: LocationStrategy,
@@ -120,7 +121,9 @@ const APP_CONTAINERS = [
         IgxButtonModule,
         IgxIconModule,
         IgxCardModule,
-        IgxRippleModule
+        IgxRippleModule,
+        FormsModule,
+        
     ]
 })
 export class AppModule {
