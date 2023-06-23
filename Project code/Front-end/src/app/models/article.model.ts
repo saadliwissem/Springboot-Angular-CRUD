@@ -1,6 +1,8 @@
 export class Article {
     ref!: number
-    pxachat!:number;
-    pxvente!:number;
-    qte!:number
+    pAcha!:number;
+    pVente!:number;
+    qte!:number;
+    src!:String;
+    name!:String;
 }
