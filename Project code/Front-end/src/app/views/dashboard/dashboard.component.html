@@ -1,5 +1,4 @@
-
-<c-card class="mb-4">
+<!-- <c-card class="mb-4">
   <c-card-body>
     <c-row>
       <c-col sm="5">
@@ -24,7 +23,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Day</label>
+              >Day</label
+            >
 
             <input
               class="btn-check"
@@ -38,7 +38,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Month</label>
+              >Month</label
+            >
 
             <input
               class="btn-check"
@@ -52,7 +53,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Year</label>
+              >Year</label
+            >
           </c-button-group>
         </form>
       </c-col>
@@ -106,14 +108,12 @@
       </c-col>
     </c-row>
   </c-card-footer>
-</c-card>
-
-
+</c-card> -->
 
 <c-row>
   <c-col xs>
     <c-card class="mb-4">
-      <c-card-header>Traffic {{ "&" }} Sales</c-card-header>
+      <c-card-header>Clients {{ "&" }} Articles</c-card-header>
       <c-card-body>
         <c-row>
           <c-col md="6" xl="6" xs="12">
@@ -122,8 +122,8 @@
                 <div
                   class="border-start border-start-4 border-start-info py-1 px-3 mb-3"
                 >
-                  <div class="text-medium-emphasis small">New Clients</div>
-                  <div class="fs-5 fw-semibold">9,123</div>
+                  <div class="text-medium-emphasis small">Number of Clients</div>
+                  <div class="fs-5 fw-semibold">{{clients.length}}</div>
                 </div>
               </c-col>
               <c-col sm="6">
@@ -131,9 +131,9 @@
                   class="border-start border-start-4 border-start-danger py-1 px-3 mb-3"
                 >
                   <div class="text-medium-emphasis small">
-                    Recurring Clients
+                    number of articles
                   </div>
-                  <div class="fs-5 fw-semibold">22,643</div>
+                  <div class="fs-5 fw-semibold">{{Articles.length}}</div>
                 </div>
               </c-col>
             </c-row>
@@ -236,34 +236,40 @@
                 <sup>
                   <span class="badge badge-pill badge-sm bg-info">&nbsp;</span>
                 </sup>
-                <span>New clients</span>
+                <span>clients</span>
                 &nbsp;&nbsp;
                 <sup>
-                  <span class="badge badge-pill badge-sm bg-danger">&nbsp;</span>
+                  <span class="badge badge-pill badge-sm bg-danger"
+                    >&nbsp;</span
+                  >
                 </sup>
-                <span>Recurring clients</span>
+                <span>Articles</span>
               </small>
             </div>
           </c-col>
 
           <c-col md="6" xl="6" xs="12">
-            <c-row>
+            <!-- <c-row>
               <c-col sm="6">
-                <div class="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
+                <div
+                  class="border-start border-start-4 border-start-warning py-1 px-3 mb-3"
+                >
                   <div class="text-medium-emphasis small">Page views</div>
                   <div class="fs-5 fw-semibold">78,623</div>
                 </div>
               </c-col>
               <c-col sm="6">
-                <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
+                <div
+                  class="border-start border-start-4 border-start-success py-1 px-3 mb-3"
+                >
                   <div class="text-medium-emphasis small">Organic</div>
                   <div class="fs-5 fw-semibold">49,123</div>
                 </div>
               </c-col>
-            </c-row>
+            </c-row> -->
 
-            <hr class="mt-0" />
-
+            <!-- <hr class="mt-0" /> -->
+            <h5><b>Clients by gender</b></h5> <pre> </pre>
             <div class="progress-group mb-4">
               <div class="progress-group-header">
                 <svg cIcon class="icon icon-lg me-2" name="cilUser"></svg>
@@ -289,7 +295,7 @@
               </div>
             </div>
 
-            <div class="progress-group">
+            <!-- <div class="progress-group">
               <div class="progress-group-header">
                 <svg cIcon class="icon icon-lg me-2" name="cibGoogle"></svg>
                 <span>Organic Search</span>
@@ -344,7 +350,7 @@
                   <c-progress-bar color="success" value="8"></c-progress-bar>
                 </c-progress>
               </div>
-            </div>
+            </div> -->
             <div class="divider d-flex justify-content-center">
               <button
                 cButton
@@ -381,62 +387,43 @@
                 <svg cIcon name="cilPeople"></svg>
               </th>
               <th>User</th>
-              <th class="text-center">Country</th>
-              <th>Usage</th>
-              <th class="text-center">Payment Method</th>
+              <th class="text-center">City</th>
+              <th>email</th>
               <th>Activity</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users; index as i">
+            <tr *ngFor="let client of clients; index as i">
               <td class="text-center">
                 <c-avatar
                   size="md"
-                  src="{{ user.avatar }}"
-                  status="{{ user.status }}"
+                  src="./assets/img/avatars/2.jpg"
+                  status="success"
                 ></c-avatar>
               </td>
               <td>
-                <div>{{ user.name }}</div>
+                <div>{{ client.nom }}</div>
                 <div class="small text-medium-emphasis text-nowrap">
                   <span>
-                    {{ user.state }} | Registered: {{ user.registered }}
+                    {{ client.adresse }} , {{ client.region }} ;
+                    {{ client.codePostale }}
                   </span>
                 </div>
               </td>
               <td class="text-center">
-                <svg
-                  cIcon
-                  id="{{ user.country + user.name }}"
-                  name="cif{{ user.country }}"
-                  size="xl"
-                  title="{{ user.country }}"
-                ></svg>
+                {{ client.ville }}
               </td>
               <td>
                 <div class="d-flex justify-content-between">
                   <div class="float-start">
-                    <strong>{{ user.usage }}%</strong>
-                  </div>
-                  <div class="float-end ms-1 text-nowrap">
-                    <small class="text-medium-emphasis">
-                      {{ user.period }}
-                    </small>
+                    <strong>{{ client.email }}</strong>
                   </div>
                 </div>
-                <c-progress thin>
-                  <c-progress-bar
-                    [value]="user.usage"
-                    color="{{ user.color }}"
-                  ></c-progress-bar>
-                </c-progress>
               </td>
-              <td class="text-center">
-                <svg cIcon name="cibCc{{ user.payment }}" size="xl"></svg>
-              </td>
+
               <td>
                 <div class="small text-medium-emphasis">Last login</div>
-                <div class="fw-semibold text-nowrap">{{ user.activity }}</div>
+                <div class="fw-semibold text-nowrap">10 sec ago</div>
               </td>
             </tr>
           </tbody>

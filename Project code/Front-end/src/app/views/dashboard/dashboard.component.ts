@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { ClientService } from 'src/app/services/client.service';
+import { Client } from 'src/app/Models/client.model';
+import { ArticleService } from 'src/app/services/article.service';
+import { Article } from 'src/app/models/article.model';
 
 interface IUser {
   name: string;
@@ -19,100 +23,44 @@ interface IUser {
 
 @Component({
   templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.scss']
+  styleUrls: ['dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
-  }
-
-  public users: IUser[] = [
-    {
-      name: 'Yiorgos Avraamu',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Us',
-      usage: 50,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Mastercard',
-      activity: '10 sec ago',
-      avatar: './assets/img/avatars/1.jpg',
-      status: 'success',
-      color: 'success'
-    },
-    {
-      name: 'Avram Tarasios',
-      state: 'Recurring ',
-      registered: 'Jan 1, 2021',
-      country: 'Br',
-      usage: 10,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Visa',
-      activity: '5 minutes ago',
-      avatar: './assets/img/avatars/2.jpg',
-      status: 'danger',
-      color: 'info'
-    },
-    {
-      name: 'Quintin Ed',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'In',
-      usage: 74,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Stripe',
-      activity: '1 hour ago',
-      avatar: './assets/img/avatars/3.jpg',
-      status: 'warning',
-      color: 'warning'
-    },
-    {
-      name: 'Enéas Kwadwo',
-      state: 'Sleep',
-      registered: 'Jan 1, 2021',
-      country: 'Fr',
-      usage: 98,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Paypal',
-      activity: 'Last month',
-      avatar: './assets/img/avatars/4.jpg',
-      status: 'secondary',
-      color: 'danger'
-    },
-    {
-      name: 'Agapetus Tadeáš',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Es',
-      usage: 22,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'ApplePay',
-      activity: 'Last week',
-      avatar: './assets/img/avatars/5.jpg',
-      status: 'success',
-      color: 'primary'
-    },
-    {
-      name: 'Friderik Dávid',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Pl',
-      usage: 43,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Amex',
-      activity: 'Yesterday',
-      avatar: './assets/img/avatars/6.jpg',
-      status: 'info',
-      color: 'dark'
-    }
-  ];
+  constructor(
+    private chartsData: DashboardChartsData,
+    private clientSer: ClientService,
+    private ServiceA : ArticleService
+  ) {}
+  clients: Client[] = [];
+  Articles: Article[]=[]
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
-    trafficRadio: new UntypedFormControl('Month')
+    trafficRadio: new UntypedFormControl('Month'),
   });
-
+  reviewClients() {
+    this.clientSer.getClients().subscribe({
+      next: (data) => {
+        this.clients = data;
+        //console.log(data);
+      },
+      error: (e) => console.log(e),
+    });
+  }
+  reviewArticles(){
+    console.log("yeah nigga!")
+    this.ServiceA.getArticles().subscribe({
+      next: (data)=>{
+        this.Articles=data;
+       // console.log(data);
+      },
+      error:(e)=>console.log(e)
+    });
+  }
   ngOnInit(): void {
     this.initCharts();
+    this.reviewClients()
+    this.reviewArticles()
   }
 
   initCharts(): void {
