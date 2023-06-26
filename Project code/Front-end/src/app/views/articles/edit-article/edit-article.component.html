@@ -1,0 +1,125 @@
+<form
+  #addform="ngForm"
+  [gutter]="3"
+  cForm
+  cCol
+  class="needs-validation"
+  ngNativeValidate
+  (submit)="updateArticle(articleToUpdate.ref)"
+>
+  <c-col [md]="4">
+    <label cLabel for="validationServer01">Article name</label>
+    <input
+      #name
+      [(ngModel)]="articleToUpdate.name"
+      name="name"
+      cFormControl
+      id="validationServer01"
+      required
+      type="text"
+      placeholder="camera canon"
+      
+    />
+    <c-form-feedback [valid]="false">invalid name</c-form-feedback>
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="validationServerUsername">Quantity </label>
+    <c-input-group class="has-validation">
+      <input
+        #qte
+        [(ngModel)]="articleToUpdate.qte"
+        name="qte"
+        aria-describedby="inputGroupPrepend03"
+        cFormControl
+        id="validationServerUsername"
+        required
+        type="number"
+        placeholder="0"
+        
+      />
+      <c-form-feedback [valid]="false">Please add a quantity !</c-form-feedback>
+    </c-input-group>
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="validationServer02">purchase price</label>
+    <input
+      name="pAcha"
+      [(ngModel)]="articleToUpdate.pAcha"
+      #pAcha
+      cFormControl
+      id="validationServer02"
+      required
+      type="number"
+      placeholder="0 TND"
+    />
+
+    <c-form-feedback [valid]="false">invalid adresse</c-form-feedback>
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="validationServerUsername">selling price</label>
+    <c-input-group class="has-validation">
+      <input
+        name="pv"
+        [(ngModel)]="articleToUpdate.pVente"
+        #pv
+        aria-describedby="inputGroupPrepend03"
+        cFormControl
+        id="validationServerUsername"
+        required
+        type="number"
+        placeholder="0 TND"
+      />
+      <c-form-feedback [valid]="false"
+        >Please use a valid email !</c-form-feedback
+      >
+    </c-input-group>
+  </c-col>
+  <c-col [md]="4">
+    <label cLabel for="validationServer02">image</label>
+    <input
+      name="src"
+      ngModel
+      #src
+      cFormControl
+      id="validationServer02"
+      type="file"
+      value="select"
+    />
+    
+    <c-form-feedback [valid]="false">only image type is supported</c-form-feedback>
+  </c-col>
+  <pre> </pre>
+  <img style="width: 200px;height: 200px;"  alt="Image Preview"  />
+  <c-col [md]="4">
+    <label cLabel for="validationServer02">Description</label>
+    <textarea
+      name="description"
+      [(ngModel)]="articleToUpdate.description"
+      #description
+      cFormControl
+      id="validationServer02"
+      type="text"
+      placeholder="Description"
+      
+    ></textarea>
+
+    <c-form-feedback [valid]="false">invalid adresse</c-form-feedback>
+  </c-col>
+  
+  <c-col [xs]="12">
+    <c-form-check class="mb-3">
+      <input cFormCheckInput id="invalidCheckServer" required type="checkbox" />
+      <label cFormCheckLabel for="invalidCheckServer"
+        >Agree to terms and conditions</label
+      >
+    </c-form-check>
+    <c-form-feedback [valid]="false"
+      >You must agree before submitting.</c-form-feedback
+    >
+  </c-col>
+  <c-col [xs]="12">
+    <button [disabled]="addform.invalid" cButton color="primary" type="submit">
+      update article
+    </button>
+  </c-col>
+</form>

@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
 import {ClientService} from "./services/client.service";
 
+//import {MatGridListModule} from '@angular/material/grid-list';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -60,7 +61,8 @@ import { ArticlesComponent } from './views/articles/articles.component';
 import { CardComponent } from './views/articles/card/card.component';
 import { AddClientComponent } from './views/clients/add-client/add-client.component';
 import { EditClientComponent } from './views/clients/edit-client/edit-client.component';
-
+import { AddArticleComponent } from './views/articles/add-article/add-article.component';
+import { EditArticleComponent } from './views/articles/edit-article/edit-article.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -73,7 +75,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, ...APP_CONTAINERS, ClinetsComponent, ArticlesComponent, CardComponent, AddClientComponent, EditClientComponent,],
+    declarations: [AppComponent, ...APP_CONTAINERS, ClinetsComponent, ArticlesComponent, CardComponent, AddClientComponent, EditClientComponent, AddArticleComponent, EditArticleComponent,],
     providers: [
         {
             provide: LocationStrategy,

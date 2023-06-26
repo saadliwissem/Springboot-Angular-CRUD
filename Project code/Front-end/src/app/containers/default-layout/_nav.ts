@@ -20,7 +20,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-people' }
   },  
   {
-    name: 'Add a new Client',
+    name: 'Add new Client',
     url: '/clients/addClient',
     iconComponent: { name: 'cil-user-follow' },
     
@@ -33,7 +33,17 @@ export const navItems: INavData[] = [
   {
     name: 'List of Articles',
     url: '/articles',
-    iconComponent: { name: 'cil-user-follow' },
+    iconComponent: { name: '' },
+    badge: {
+      color: 'info',
+      text: ''
+    }
+  }
+  ,
+  {
+    name: 'Add new Articles',
+    url: '/articles/addArticle',
+    iconComponent: { name: '' },
     badge: {
       color: 'info',
       text: ''

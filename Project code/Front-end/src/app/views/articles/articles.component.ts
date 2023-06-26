@@ -20,10 +20,37 @@ export class ArticlesComponent implements OnInit{
     this.ServiceA.getArticles().subscribe({
       next: (data)=>{
         this.Articles=data;
+        this.filtredArticles=data;
        // console.log(data);
       },
       error:(e)=>console.log(e)
     });
+  }
+  
+//search 
+  searchAttribute: string = '';
+  searchValue: string = '';
+  filtredArticles:Article[] = this.filterArticles();
+ 
+  filterArticles(): Article[] {
+    
+    let articles= this.Articles.filter((article) => {
+      const attributeValue = article[this.searchAttribute];
+      if (typeof attributeValue === 'string') {
+        return attributeValue
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+      }
+      if (typeof attributeValue === 'number') {
+        return attributeValue
+          .toString()
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+      }
+      return false;
+    });
+    this.filtredArticles=articles
+    return articles
   }
 
 }

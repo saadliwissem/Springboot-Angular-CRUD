@@ -1,52 +1,93 @@
+<div style="display: flex; justify-content: space-between">
+  <a href="#/clients/addClient"
+    ><button cButton color="primary" type="submit">create new Client</button></a
+  >
+  <div style="display: flex; justify-content: space-between">
+    <div style="align-self: flex-end" class="form-group">
+      <select
+        class="form-control"
+        
+        [(ngModel)]="searchAttribute"
+      >
+        <option value="" disabled selected>Filter by <igx-icon name="arrow_down"></igx-icon></option>
+        <option value="nom">name</option>
+        <option value="adresse">Address</option>
+        <option value="ville">Ville</option>
+        <option value="email">email</option>
+        <option value="codePostale">zip code</option>
+        <option value="tel">phone</option>
+
+        <!-- Add options for other attributes -->
+      </select>
+    </div>
+    <pre></pre>
+    <div style="align-self: flex-end" class="form-group">
+      <input
+        class="form-control"
+        [(ngModel)]="searchValue"
+        (input)="filterClients()"
+        placeholder="Search"
+      />
+    </div>
+  </div>
+</div>
+<pre></pre>
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
-        <strong>Clients</strong> 
+        <strong>Clients</strong>
       </c-card-header>
       <c-card-body>
-        
         <div class="table-responsive-md">
           <table [striped]="true" cTable>
             <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">nom</th>
-              <th scope="col">adresse</th>
-              <th scope="col">ville</th>
-              <th scope="col">region</th>
-              <th scope="col">code postale</th>
-              <th scope="col">num de compte</th>
-              <th scope="col">num de téléphone</th>
-            </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">address</th>
+                <th scope="col">city</th>
+                <th scope="col">region</th>
+                <th scope="col">zip code</th>
+                <th scope="col">email</th>
+                <th scope="col">phone number</th>
+              </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let client of clients; let i=index">
-              <th scope="row">{{i+1}}</th>
-              <td>{{client.nom}}</td>
-              <td>{{client.adresse}}</td>
-              <td>{{client.ville}}</td>
-              <td>{{client.region}}</td>
-              <td>{{client.codePostale}}</td>
-              <td>{{client.countNum}}</td>
-              <td>{{client.tel}}</td>
-                
-              <td><Button (click)="deleteClient(client.id,client.nom)">edit</Button></td>
-              <td><Button (click)="deleteClient(client.id,client.nom)">delete</Button> </td>
-              
-            </tr>
-            
+              <tr *ngFor="let client of filtredClients; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.adresse }}</td>
+                <td>{{ client.ville }}</td>
+                <td>{{ client.region }}</td>
+                <td>{{ client.codePostale }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.tel }}</td>
+
+                <td>
+                  <Button
+                    (click)="editClient(client.id)"
+                    style="border: none; color: blue"
+                    ><igx-icon>edit</igx-icon>
+                  </Button>
+                </td>
+
+                <td>
+                  <Button
+                    (click)="deleteClient(client.id, client.nom)"
+                    style="border: none; color: red"
+                    ><igx-icon>delete</igx-icon></Button
+                  >
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div>
-          
-        </div>
-        
+        <div></div>
       </c-card-body>
     </c-card>
   </c-col>
 </c-row>
 <div>
-  {{codePostaleTunisie[1]}}
+  {{ codePostaleTunisie[1] }}
 </div>

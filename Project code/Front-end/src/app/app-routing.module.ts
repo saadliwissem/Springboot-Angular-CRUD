@@ -9,6 +9,9 @@ import { RegisterComponent } from './views/pages/register/register.component';
 import { ClinetsComponent } from './views/clients/clinets.component';
 import { ArticlesComponent } from './views/articles/articles.component';
 import { AddClientComponent } from './views/clients/add-client/add-client.component';
+import { AddArticleComponent } from './views/articles/add-article/add-article.component';
+import { EditArticleComponent } from './views/articles/edit-article/edit-article.component';
+import { EditClientComponent } from './views/clients/edit-client/edit-client.component';
 
 const routes: Routes = [
   {
@@ -45,6 +48,26 @@ const routes: Routes = [
       {
       path: 'articles',
       component: ArticlesComponent,
+      data: {
+        title: 'article'
+      }
+    },
+      {
+      path: 'articles/addArticle',
+      component: AddArticleComponent,
+      data: {
+        title: 'article'
+      }
+    },
+    {
+      path: 'articles/edit/:id',
+      component: EditArticleComponent,
+      data: {
+        title: 'article'
+      }
+    },{
+      path: 'clients/edit/:id',
+      component: EditClientComponent,
       data: {
         title: 'article'
       }

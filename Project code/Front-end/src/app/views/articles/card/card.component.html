@@ -4,18 +4,23 @@
   </igx-card-media>
 
   <igx-card-header>
-    <h3 igxCardHeaderTitle>{{ a.name }}</h3>
-    <h3 igxCardHeaderTitle>{{ a.pAcha }}</h3>
-    <h5 igxCardHeaderSubtitle>{{ a.pVente }}</h5>
+    Quantity:
+    {{ a.qte }}
+
+    <h3 style="color: brown" igxCardHeaderTitle>{{ a.name }}</h3>
+    <h3 igxCardHeaderTitle>purchase price: {{ a.pAcha }} TND</h3>
+    <h5 igxCardHeaderSubtitle>selling price : {{ a.pVente }}TND</h5>
   </igx-card-header>
 
   <igx-card-content>
-    <p>{{ a.ref }}</p>
+    <p>{{ a.description }}</p>
   </igx-card-content>
 
   <igx-card-actions>
     <button igxButton="icon" igxRipple [igxRippleCentered]="true"></button>
-    <igx-icon style="color: blue">edit</igx-icon>
-    <igx-icon style="color: red; margin-left: 10px">delete</igx-icon>
+    <igx-icon (click)="redirect(a.ref)" style="color: blue; cursor: pointer">edit</igx-icon>
+    <igx-icon (click)="deleteArticle(a.ref,a.name)" style="color: red; margin-left: 10px; cursor: pointer"
+      >delete</igx-icon
+    >
   </igx-card-actions>
 </igx-card>

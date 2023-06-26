@@ -3,9 +3,10 @@ export class Client {
     nom!:string;
     adresse!:string;
     email!:string
-     codePostale!:number;
-     ville!:string;
-     region !:string;
-     tel!:number;
-     countNum!:number;
+    codePostale!:number;
+    ville!:string;
+    region !:string;
+    tel!:number;
+    countNum!:number;
+    [key: string]: string|number;
 }

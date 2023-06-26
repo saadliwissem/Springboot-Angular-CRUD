@@ -1,7 +1,8 @@
 package com.iset.projetIntegration.CRUD.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Article {
@@ -13,6 +14,16 @@ private byte qte;
 private String src;
 private String name;
 private String description;
+@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+@JoinTable(name = "article_images",
+        joinColumns = {
+        @JoinColumn(name = "article_id")
+        },
+        inverseJoinColumns = {
+        @JoinColumn(name = "image_id")
+        }
+)
+private Set<ImageModel> ArticleImages;
     public Article() {
     }
 
@@ -79,6 +90,14 @@ private String description;
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<ImageModel> getArticleImages() {
+        return ArticleImages;
+    }
+
+    public void setArticleImages(Set<ImageModel> articleImages) {
+        ArticleImages = articleImages;
     }
 }
 

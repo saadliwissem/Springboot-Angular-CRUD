@@ -15,11 +15,14 @@ public class Client {
     private String region;
     private int tel;
     private int countNum;
+    private String pwd;
+    private String email;
+
 
     public Client() {
     }
 
-    public Client(long id, String nom, String adresse, int codePostale, String ville, String region, int tel, int countNum) {
+    public Client(long id, String nom, String adresse, int codePostale, String ville, String region, int tel, int countNum,String pwd,String email) {
         this.id=id;
         this.nom = nom;
         this.adresse = adresse;
@@ -28,6 +31,8 @@ public class Client {
         this.region = region;
         this.tel = tel;
         this.countNum = countNum;
+        this.pwd=pwd;
+this.email=email;
     }
 
     public long getId() {
@@ -92,5 +97,21 @@ public class Client {
 
     public void setCountNum(int countNum) {
         this.countNum = countNum;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -28,46 +28,25 @@ export class ClientService {
    deleteClient(id: number): Observable<any> {
     return this.httpC.delete(`${this.ApiUri+this.deleteClientsEndPoint}/${id}`);
   }
- /* AddClient(client:Client):Observable<Client>{
-      return this.
-  }*/
+ 
 
   //add client function 
    addClient(client:Client):Observable<Client>{
     const url = `${this.ApiUri+this.ClientsEndPoint}`;
-    /*const params = new HttpParams({
-      fromObject: {
-        nom :client.nom,
-        adresse:client.adresse,
-        email:client.email,
-        tel:client.tel,
-        ville: client.ville,
-        region: client.region,
-        codePostale: client.codePostale,
-        
-      }
-    });*/
+    
     return this.httpC.post<Client>(url, client, this.httpOptions);
 
   }
-  //update client function 
-  /*updateClient(id:number):Observable<Client>{
-    const url : String=`${this.ApiUri+this.deleteClientsEndPoint}`
-    const params= new HttpParams({
-      fromObject:{
-        nom :client.nom,
-        adresse:client.adresse,
-        email:client.email,
-        tel:client.tel,
-        ville: client.ville,
-        region: client.region,
-        codePostale: client.codePostale,
-        
-      }
-    })
-  }*/
-  //get client by id function
+  //update client
+  updateClient(id:number,client:Client){
+    const url = `${this.ApiUri+"/client/"+id}`;
+    return this.httpC.put<Client>(url, client, this.httpOptions);
 
-  
-  
+  }
+  //get client by id 
+  getClient(id:number) :Observable<Client>{
+    const url =`${this.ApiUri+"/client/"+id}`;
+    return this.httpC
+    .get<Client>(url)
+   }
 }
