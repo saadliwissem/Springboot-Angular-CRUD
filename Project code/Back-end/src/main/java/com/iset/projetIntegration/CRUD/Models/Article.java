@@ -2,11 +2,10 @@ package com.iset.projetIntegration.CRUD.Models;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
 public class Article {
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private long ref;
 private long pAcha;
 private long pVente;
@@ -14,16 +13,8 @@ private byte qte;
 private String src;
 private String name;
 private String description;
-@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-@JoinTable(name = "article_images",
-        joinColumns = {
-        @JoinColumn(name = "article_id")
-        },
-        inverseJoinColumns = {
-        @JoinColumn(name = "image_id")
-        }
-)
-private Set<ImageModel> ArticleImages;
+
+
     public Article() {
     }
 
@@ -34,6 +25,7 @@ private Set<ImageModel> ArticleImages;
         this.qte = qte;
         this.src= src;
         this.name=name;
+        this.description=description;
     }
 
     public long getRef() {
@@ -92,12 +84,6 @@ private Set<ImageModel> ArticleImages;
         this.description = description;
     }
 
-    public Set<ImageModel> getArticleImages() {
-        return ArticleImages;
-    }
 
-    public void setArticleImages(Set<ImageModel> articleImages) {
-        ArticleImages = articleImages;
-    }
 }
 

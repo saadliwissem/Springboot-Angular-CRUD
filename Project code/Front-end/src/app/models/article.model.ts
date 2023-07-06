@@ -8,6 +8,6 @@ export class Article {
     src!:string;
     name!:string;
     description!:string;
-    articleImages : FileHandle[] | undefined
+    
     [key: string]: string|number|FileHandle[]|undefined;
 }

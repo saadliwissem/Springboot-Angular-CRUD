@@ -32,7 +32,7 @@ export class ArticleService {
     return this.httpC
     .get<Article>(url)
    }
-   addArticle(article:FormData):Observable<Article>{
+   addArticle(article:Article):Observable<Article>{
     const url = `${this.ApiUri+this.ArticleEndPoint}`;
     
     return this.httpC.post<Article>(url, article, this.httpOptions);

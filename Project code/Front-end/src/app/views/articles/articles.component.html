@@ -1,40 +1,39 @@
 <div style="display: flex; justify-content: space-between">
-    <a href="/#/articles/addArticle"><button cButton color="primary" type="submit">create an article</button></a>
-    <div style="display: flex; justify-content: space-between">
-      <div style="align-self: flex-end" class="form-group">
-        <select
-          class="form-control"
-          
-          [(ngModel)]="searchAttribute"
-        >
-          <option value="" disabled selected>Filter by <igx-icon name="arrow_down"></igx-icon></option>
-          <option value="name">name</option>
-          <option value="pAcha">purchase price</option>
-          <option value="pVente">selling price</option>
-          <option value="qte">quantity</option>
-          <option value="description">description</option>
-  
-          <!-- Add options for other attributes -->
-        </select>
-      </div>
-      <pre></pre>
-      <div style="align-self: flex-end" class="form-group">
-        <input
-          class="form-control"
-          [(ngModel)]="searchValue"
-          (input)="filterArticles()"
-          placeholder="Search"
-        />
-      </div>
+  <a href="/#/articles/addArticle"
+    ><button cButton color="primary" type="submit">create an article</button></a
+  >
+  <div style="display: flex; justify-content: space-between">
+    <div style="align-self: flex-end" class="form-group">
+      <select class="form-control" [(ngModel)]="searchAttribute">
+        <option value="" disabled selected>
+          Filter by <igx-icon name="arrow_down"></igx-icon>
+        </option>
+        <option value="name">name</option>
+        <option value="pAcha">purchase price</option>
+        <option value="pVente">selling price</option>
+        <option value="qte">quantity</option>
+        <option value="description">description</option>
+
+        <!-- Add options for other attributes -->
+      </select>
+    </div>
+    <pre></pre>
+    <div style="align-self: flex-end" class="form-group">
+      <input
+        class="form-control"
+        [(ngModel)]="searchValue"
+        (input)="filterArticles()"
+        placeholder="Search"
+      />
     </div>
   </div>
-  <pre></pre>
+</div>
+<pre></pre>
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
-    <div class="col" *ngFor="let article of filtredArticles;let i=index">
-        <div class="card mb-3" style="max-width: 540px;">
-            <app-card [a]="article" ></app-card>
-        </div>
+  <div class="col" *ngFor="let article of filtredArticles; let i = index">
+    <div class="card mb-3" style="max-width: 540px">
+      <app-card [a]="article"></app-card>
     </div>
+  </div>
 </div>
-

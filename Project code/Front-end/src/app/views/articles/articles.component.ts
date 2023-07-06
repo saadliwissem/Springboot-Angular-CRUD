@@ -16,7 +16,7 @@ export class ArticlesComponent implements OnInit{
     this.reviewClients()
   }
   reviewClients(){
-    console.log("yeah nigga!")
+    
     this.ServiceA.getArticles().subscribe({
       next: (data)=>{
         this.Articles=data;

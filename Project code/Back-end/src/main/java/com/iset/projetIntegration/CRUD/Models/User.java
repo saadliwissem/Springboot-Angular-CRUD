@@ -6,9 +6,10 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
     @Id
+    private double cin;
     private String name;
     private String lastName;
-    private double cin;
+
 
     public User() {
     }

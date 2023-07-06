@@ -74,24 +74,6 @@
     </c-input-group>
   </c-col>
   <c-col [md]="4">
-    <label cLabel for="validationServer02">image</label>
-    <input
-      name="src"
-      ngModel
-      #src
-      cFormControl
-      id="validationServer02"
-      type="file"
-      value="select"
-      (change)="onSelect(src.files)"
-      [valid]="msg"
-    />
-    
-    <c-form-feedback [valid]="false">only image type is supported</c-form-feedback>
-  </c-col>
-  <pre> </pre>
-  <img style="width: 200px;height: 200px;" [src]="ImgUrl" alt="Image Preview" *ngIf="ImgUrl" />
-  <c-col [md]="4">
     <label cLabel for="validationServer02">Description</label>
     <textarea
       name="description"

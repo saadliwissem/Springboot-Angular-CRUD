@@ -22,15 +22,9 @@ export class AddArticleComponent {
     console.log(name);
   }
   addArticle(newArticle: Article) {
-    const articleFormData = this.prepareFormData(newArticle);
-    this.articleSer.addArticle(articleFormData).subscribe();
+    this.articleSer.addArticle(newArticle).subscribe();
   }
-  file: any;
-  ImgUrl: any;
-  msg: any = null;
-  imgpath: any;
 
-  //
   article: Article = {
     name: '',
     description: '',
@@ -52,7 +46,7 @@ export class AddArticleComponent {
         form.value.src ||
         'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg',
       ref: 0,
-      articleImages: this.article.articleImages,
+      
     };
     this.article = Article;
     console.log(Article);
@@ -62,51 +56,51 @@ export class AddArticleComponent {
     //alerting succ adding client
     alert('article added successfully');
   }
-  prepareFormData(article: Article): FormData {
-    const formData = new FormData();
-    formData.append(
-      'article',
-      new Blob([JSON.stringify(article)], { type: 'application/json' })
-    );
-    if (article.articleImages)
-      for (var i = 0; i < article.articleImages.length; i++) {
-        formData.append(
-          'imageFile',
-          article.articleImages[i].file,
-          article.articleImages[i].file.name
-        );
-      }
-    return formData;
-  }
-  onSelect(files: FileList | null) {
-    if (files && files.length > 0) {
-      const file = files[0];
-      this.file = file;
-      var mimeType = file.type;
-      if (mimeType.match(/image\/*/) == null) {
-        this.msg = false;
-        return;
-      } else {
-        this.msg = true;
-      }
-      var reader = new FileReader();
-      this.imgpath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event: ProgressEvent<FileReader>) => {
-        if (reader.result) {
-          this.ImgUrl = reader.result.toString();
-        }
-      };
-      console.log(file);
-      // Perform further operations with the selected file
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sinitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        ),
-      };
-      if (this.article.articleImages)
-        this.article.articleImages.push(fileHandle);
-    }
-  }
+  // prepareFormData(article: Article): FormData {
+  //   const formData = new FormData();
+  //   formData.append(
+  //     'article',
+  //     new Blob([JSON.stringify(article)], { type: 'application/json' })
+  //   );
+  //   if (article.articleImages)
+  //     for (var i = 0; i < article.articleImages.length; i++) {
+  //       formData.append(
+  //         'imageFile',
+  //         article.articleImages[i].file,
+  //         article.articleImages[i].file.name
+  //       );
+  //     }
+  //   return formData;
+  // }
+  // onSelect(files: FileList | null) {
+  //   if (files && files.length > 0) {
+  //     const file = files[0];
+  //     this.file = file;
+  //     var mimeType = file.type;
+  //     if (mimeType.match(/image\/*/) == null) {
+  //       this.msg = false;
+  //       return;
+  //     } else {
+  //       this.msg = true;
+  //     }
+  //     var reader = new FileReader();
+  //     this.imgpath = file;
+  //     reader.readAsDataURL(file);
+  //     reader.onload = (_event: ProgressEvent<FileReader>) => {
+  //       if (reader.result) {
+  //         this.ImgUrl = reader.result.toString();
+  //       }
+  //     };
+  //     console.log(file);
+  //     // Perform further operations with the selected file
+  //     const fileHandle: FileHandle = {
+  //       file: file,
+  //       url: this.sinitizer.bypassSecurityTrustUrl(
+  //         window.URL.createObjectURL(file)
+  //       ),
+  //     };
+  //     if (this.article.articleImages)
+  //       this.article.articleImages.push(fileHandle);
+  //   }
+  // }
 }
